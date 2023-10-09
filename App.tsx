@@ -1,25 +1,15 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button, PaperProvider } from 'react-native-paper';
+import { PaperProvider } from 'react-native-paper';
+import Navigator from './src/navigation/Navigator';
 
 export default function App() {
   return (
-    <PaperProvider>
-      <View style={styles.container}>
-        <Text>Welcome to PDFish!</Text>
-        <Button mode="contained" onPress={() => console.log('Pressed')}>
-          Test
-        </Button>
-        <StatusBar style="auto" />
-      </View>
-    </PaperProvider>
+    <>
+      <PaperProvider>
+        <Navigator />
+      </PaperProvider>
+      <StatusBar style="auto" />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
