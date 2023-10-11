@@ -7,7 +7,7 @@ import { RootStackParamList } from '../types/navigation';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const Navigator = () => {
+export default function Navigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -16,6 +16,4 @@ const Navigator = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
-
-export default Navigator;
+}

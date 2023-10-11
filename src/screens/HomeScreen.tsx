@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { HomeNavigationProp } from '../types/navigation';
 
-const HomeScreen = () => {
+export default function HomeScreen() {
   const navigation = useNavigation<HomeNavigationProp>();
 
   return (
@@ -15,14 +15,12 @@ const HomeScreen = () => {
       </Button>
     </View>
   );
-};
-
-export default HomeScreen;
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
   },
 });

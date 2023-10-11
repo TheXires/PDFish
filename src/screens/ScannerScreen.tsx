@@ -1,20 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const ScannerScreen = () => {
+export default function ScannerScreen() {
   return (
     <View style={styles.container}>
       <Text>ScannerScreen</Text>
     </View>
   );
-};
-
-export default ScannerScreen;
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
   },
 });
