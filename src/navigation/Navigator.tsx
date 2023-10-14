@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, Theme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import ScannerScreen from '../screens/ScannerScreen';
@@ -7,9 +7,13 @@ import BottomNavigator from './BottomNavigator';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export default function Navigator() {
+interface Props {
+  theme: Theme;
+}
+
+export default function Navigator({ theme }: Props) {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <Stack.Navigator>
         <Stack.Screen name="Main" component={BottomNavigator} options={{ animation: 'none' }} />
         <Stack.Screen

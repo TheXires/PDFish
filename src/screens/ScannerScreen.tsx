@@ -1,13 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
+import { useTheme } from 'react-native-paper';
 
 export default function ScannerScreen() {
+  const theme = useTheme();
   const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
-      <Text>{t('ScannerScreen.title')}</Text>
+      <Text style={{ color: theme.colors.onSurface }}>{t('ScannerScreen.title')}</Text>
     </View>
   );
 }
