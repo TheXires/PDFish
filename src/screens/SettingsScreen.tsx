@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function SettingsScreen() {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.container}>
-      <Text>SettingsScreen</Text>
+      <Text>{t('SettingsScreen.title')}</Text>
     </View>
   );
 }

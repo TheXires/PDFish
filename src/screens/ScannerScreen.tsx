@@ -1,10 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function ScannerScreen() {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.container}>
-      <Text>ScannerScreen</Text>
+      <Text>{t('ScannerScreen.title')}</Text>
     </View>
   );
 }

@@ -1,0 +1,13 @@
+{
+  "homeScreen": {
+    "title": "Home",
+    "welcome": "Willkommen bei PDFisch!",
+    "add": "Hinzufügen"
+  },
+  "SettingsScreen": {
+    "title": "Einstellungen"
+  },
+  "ScannerScreen": {
+    "title": "Scanner"
+  }
+}

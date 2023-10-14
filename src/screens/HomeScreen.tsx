@@ -1,17 +1,19 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 import { FAB } from 'react-native-paper';
 import { HomeNavigationProp } from '../types/navigation';
 
 export default function HomeScreen() {
   const navigation = useNavigation<HomeNavigationProp>();
+  const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
-      <Text>Welcome to PDFish!</Text>
+      <Text>{t('homeScreen.welcome')}</Text>
       <FAB
-        label="Hinzufügen"
+        label={t('homeScreen.add')}
         onPress={() => navigation.navigate('Scanner')}
         icon="plus"
         style={styles.fab}
