@@ -7,13 +7,15 @@ import merge from 'deepmerge';
 import { ColorSchemeName } from 'react-native';
 import { MD3DarkTheme, MD3LightTheme, adaptNavigationTheme } from 'react-native-paper';
 
-const adaptiveNavigationTheme = adaptNavigationTheme({
-  reactNavigationDark: NavigationDarkTheme,
-  reactNavigationLight: NavigationDefaultTheme,
-});
-
 export default function getCombinedTheme(theme: Material3Theme, selectedScheme: ColorSchemeName) {
+  const adaptiveNavigationTheme = adaptNavigationTheme({
+    materialDark: { ...MD3DarkTheme, colors: theme.dark },
+    materialLight: { ...MD3LightTheme, colors: theme.light },
+    reactNavigationDark: NavigationDarkTheme,
+    reactNavigationLight: NavigationDefaultTheme,
+  });
+
   return selectedScheme === 'dark'
-    ? merge({ ...MD3DarkTheme, colors: theme.dark }, adaptiveNavigationTheme.DarkTheme)
-    : merge({ ...MD3LightTheme, colors: theme.light }, adaptiveNavigationTheme.LightTheme);
+    ? merge(adaptiveNavigationTheme.DarkTheme, { ...MD3DarkTheme, colors: theme.dark })
+    : merge(adaptiveNavigationTheme.LightTheme, { ...MD3LightTheme, colors: theme.light });
 }
