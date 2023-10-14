@@ -4,6 +4,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "localization": "bunx i18next-resources-for-ts interface -i ./src/i18n/en -o ./src/types/localization.d.ts",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -13,8 +14,11 @@
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/native-stack": "^6.9.14",
     "expo": "~49.0.13",
+    "expo-localization": "~14.3.0",
     "expo-status-bar": "~1.6.0",
+    "i18next": "^23.5.1",
     "react": "18.2.0",
+    "react-i18next": "^13.3.0",
     "react-native": "0.72.5",
     "react-native-paper": "^5.10.6",
     "react-native-safe-area-context": "4.6.3",
