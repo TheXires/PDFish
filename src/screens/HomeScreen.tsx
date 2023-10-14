@@ -1,18 +1,52 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, View } from 'react-native';
-import { FAB } from 'react-native-paper';
+import {
+  FlatList,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import { AnimatedFAB, Button, Divider, List } from 'react-native-paper';
 import { HomeNavigationProp } from '../types/navigation';
+
+// TODO remove dummyData after implementation
+const dummyData = Array(50).fill('Test');
 
 export default function HomeScreen() {
   const navigation = useNavigation<HomeNavigationProp>();
   const { t } = useTranslation();
 
+  const [lastScrollPosition, setLastScrollPosition] = useState(0);
+  const [isFABExtended, setIsFABExtended] = useState(true);
+  const [documents, setDocuments] = useState<string[] | undefined>(undefined);
+
+  const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const currentScrollPosition = Math.floor(event.nativeEvent?.contentOffset?.y) ?? 0;
+    setLastScrollPosition(currentScrollPosition);
+    setIsFABExtended(currentScrollPosition <= 0 || lastScrollPosition > currentScrollPosition);
+  };
+
   return (
     <View style={styles.container}>
-      <Text>{t('homeScreen.welcome')}</Text>
-      <FAB
+      {!documents ? (
+        <>
+          <Text>{t('homeScreen.welcome')}</Text>
+          <Button onPress={() => setDocuments(dummyData)}>Add Documents</Button>
+        </>
+      ) : (
+        <FlatList
+          onScroll={onScroll}
+          style={{ width: '100%' }}
+          data={dummyData}
+          renderItem={(value) => <List.Item title={value.item} />}
+          ItemSeparatorComponent={Divider}
+        />
+      )}
+      <AnimatedFAB
+        extended={isFABExtended}
         label={t('homeScreen.add')}
         onPress={() => navigation.navigate('Scanner')}
         icon="plus"
