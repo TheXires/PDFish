@@ -6,6 +6,8 @@
     "start": "expo start",
     "dev": "expo start --dev-client",
     "localization": "bunx i18next-resources-for-ts interface -i ./src/i18n/en -o ./src/types/localization.d.ts",
+    "build-dev": "eas build --profile development --platform android --local",
+    "build": "eas build --profile preview --platform android --local",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
