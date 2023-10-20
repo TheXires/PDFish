@@ -1,15 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  FlatList,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import { AnimatedFAB, Button, Divider, List, useTheme } from 'react-native-paper';
+import { FlatList, NativeScrollEvent, NativeSyntheticEvent, StyleSheet, View } from 'react-native';
+import { AnimatedFAB, Button, Divider, List, Text } from 'react-native-paper';
 import { HomeNavigationProp } from '../types/navigation';
 
 // TODO remove dummyData after implementation
@@ -17,7 +10,6 @@ const dummyData = Array(50).fill('Test');
 
 export default function HomeScreen() {
   const navigation = useNavigation<HomeNavigationProp>();
-  const theme = useTheme();
   const { t } = useTranslation();
 
   const [lastScrollPosition, setLastScrollPosition] = useState(0);
@@ -34,7 +26,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       {!documents ? (
         <>
-          <Text style={{ color: theme.colors.onSurface }}>{t('homeScreen.welcome')}</Text>
+          <Text>{t('homeScreen.welcome')}</Text>
           <Button onPress={() => setDocuments(dummyData)}>Add Documents</Button>
         </>
       ) : (
