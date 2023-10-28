@@ -10,7 +10,9 @@ export type BottomTabParamList = {
   Settings: undefined;
 };
 
-// BottomTabNavigator
+/**
+ * BottomTabNavigator
+ */
 export type HomeNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<BottomTabParamList, 'Home'>,
   ScannerNavigationProp
@@ -24,6 +26,8 @@ export type RootStackParamList = {
   Scanner: undefined;
 };
 
-// RootStackNavigator
+/**
+ * RootStackNavigator
+ */
 export type MainNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Main'>;
 export type ScannerNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Scanner'>;

@@ -13,14 +13,25 @@ interface Resources {
         "presentation": "Presentation",
         "theme": "Theme",
         "themeOptions": {
+          "system": "System",
           "dark": "Dark",
-          "light": "Light",
-          "system": "System"
+          "light": "Light"
         },
-        "language": "Language"
+        "language": "Language",
+        "languageOptions": {
+          "system": "System",
+          "de": "German",
+          "en": "English"
+        }
       },
       "scanner": {
         "title": "Scanner"
+      }
+    },
+    "components": {
+      "dialog": {
+        "save": "Save",
+        "cancel": "Cancel"
       }
     },
     "languages": {

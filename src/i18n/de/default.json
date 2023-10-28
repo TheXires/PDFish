@@ -12,14 +12,25 @@
       "presentation": "Darstellung",
       "theme": "Design",
       "themeOptions": {
+        "system": "System",
         "dark": "Dunkel",
-        "light": "Hell",
-        "system": "System"
+        "light": "Hell"
       },
-      "language": "Sprache"
+      "language": "Sprache",
+      "languageOptions": {
+        "system": "System",
+        "de": "Deutsch",
+        "en": "Englisch"
+      }
     },
     "scanner": {
       "title": "Scanner"
+    }
+  },
+  "components": {
+    "dialog": {
+      "save": "Speichern",
+      "cancel": "Abbrechen"
     }
   },
   "languages": {
