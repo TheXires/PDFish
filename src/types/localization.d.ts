@@ -8,7 +8,7 @@ interface Resources {
       },
       "settings": {
         "title": "Settings",
-    },
+        "security": "Security",
         "biometric": "Biometrics",
         "presentation": "Presentation",
         "theme": "Theme",

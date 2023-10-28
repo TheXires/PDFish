@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Divider, List, Switch, Text } from 'react-native-paper';
+import { List, Switch } from 'react-native-paper';
 import RadioButtonDialog from '../components/RadioButtonDialog';
 
 const languages = ['Deutsch', 'Englisch'];
@@ -18,32 +18,37 @@ export default function SettingsScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>{t('SettingsScreen.title')}</Text>
       <ScrollView>
-        <List.Item
-          title="Test(Biometrics)"
-          right={() =>
-            Switch({
-              onChange: () => setToggled((prev) => !prev),
-              value: toggled,
-            })
-          }
-          style={{ flex: 1, justifyContent: 'space-between' }}
-        />
-        <Divider />
-        <List.Item
-          title="Test(Sprache)"
-          style={{ flex: 1, justifyContent: 'space-between' }}
-          onPress={() => setShowLanguageDialog(true)}
-        />
-        <Divider />
-        <List.Item
-          title="Test(Theme)"
-          style={{ flex: 1, justifyContent: 'space-between' }}
-          onPress={() => setShowThemeDialog(true)}
-        />
+        <List.Section>
+          <List.Subheader>{t('screen.settings.security')}</List.Subheader>
+          <List.Item
+            title={t('screen.settings.biometric')}
+            right={() =>
+              Switch({
+                onChange: () => setToggled((prev) => !prev),
+                value: toggled,
+              })
+            }
+            style={{ flex: 1, justifyContent: 'space-between' }}
+          />
+        </List.Section>
+        <List.Section>
+          <List.Subheader>{t('screen.settings.presentation')}</List.Subheader>
+          <List.Item
+            title={t('screen.settings.language')}
+            right={() => List.Icon({ icon: 'chevron-right' })}
+            style={{ flex: 1, justifyContent: 'space-between' }}
+            onPress={() => setShowLanguageDialog(true)}
+          />
+          <List.Item
+            title={t('screen.settings.theme')}
+            right={() => List.Icon({ icon: 'chevron-right' })}
+            style={{ flex: 1, justifyContent: 'space-between' }}
+            onPress={() => setShowThemeDialog(true)}
+          />
+        </List.Section>
         <RadioButtonDialog
-          title="ToDd(LanguageDialog)"
+          title={t('screen.settings.language')}
           visible={showLanguageDialog}
           onDismiss={() => setShowLanguageDialog(false)}
           onSave={() => setShowLanguageDialog(false)}
@@ -52,7 +57,7 @@ export default function SettingsScreen() {
           setValue={setLanguage}
         />
         <RadioButtonDialog
-          title="ToDd(ThemeDialog)"
+          title={t('screen.settings.theme')}
           visible={showThemeDialog}
           onDismiss={() => setShowThemeDialog(false)}
           onSave={() => setShowThemeDialog(false)}
