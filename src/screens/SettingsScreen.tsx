@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, View } from 'react-native';
+import { useMMKVBoolean, useMMKVString } from 'react-native-mmkv';
 import { List, Switch } from 'react-native-paper';
 import RadioButtonDialog from '../components/RadioButtonDialog';
-
-const languages = ['Deutsch', 'Englisch'];
-const themes = ['light', 'dark', 'system'];
+import {
+  KEY_SETTINGS_IS_PROTECTED,
+  KEY_SETTINGS_LANGUAGE,
+  KEY_SETTINGS_THEME,
+  languageOptions,
+  themeOptions,
+} from '../types/userSettings';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
 
-  const [toggled, setToggled] = useState<boolean>(false);
+  const [isProtected, setIsProtected] = useMMKVBoolean(KEY_SETTINGS_IS_PROTECTED);
   const [showLanguageDialog, setShowLanguageDialog] = useState<boolean>(false);
   const [showThemeDialog, setShowThemeDialog] = useState<boolean>(false);
-  const [theme, setTheme] = useState(themes[0]);
-  const [language, setLanguage] = useState(languages[0]);
+  const [theme, setTheme] = useMMKVString(KEY_SETTINGS_THEME);
+  const [language, setLanguage] = useMMKVString(KEY_SETTINGS_LANGUAGE);
 
   return (
     <View style={styles.container}>
@@ -25,8 +30,8 @@ export default function SettingsScreen() {
             title={t('screen.settings.biometric')}
             right={() =>
               Switch({
-                onChange: () => setToggled((prev) => !prev),
-                value: toggled,
+                onChange: () => setIsProtected((prev) => !prev),
+                value: isProtected,
               })
             }
             style={{ flex: 1, justifyContent: 'space-between' }}
@@ -52,18 +57,20 @@ export default function SettingsScreen() {
           visible={showLanguageDialog}
           onDismiss={() => setShowLanguageDialog(false)}
           onSave={() => setShowLanguageDialog(false)}
-          options={languages}
-          value={language}
+          options={languageOptions}
+          value={language ?? 'system'}
           setValue={setLanguage}
+          translationPrefix="screen.settings.languageOptions."
         />
         <RadioButtonDialog
           title={t('screen.settings.theme')}
           visible={showThemeDialog}
           onDismiss={() => setShowThemeDialog(false)}
           onSave={() => setShowThemeDialog(false)}
-          options={themes}
-          value={theme}
+          options={themeOptions}
+          value={theme ?? 'system'}
           setValue={setTheme}
+          translationPrefix="screen.settings.themeOptions."
         />
       </ScrollView>
     </View>
