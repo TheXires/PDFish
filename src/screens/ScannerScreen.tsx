@@ -8,7 +8,7 @@ export default function ScannerScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>{t('ScannerScreen.title')}</Text>
+      <Text>{t('screen.scanner.title')}</Text>
     </View>
   );
 }

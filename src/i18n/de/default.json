@@ -1,13 +1,30 @@
 {
-  "homeScreen": {
-    "title": "Home",
-    "welcome": "Willkommen bei PDFisch!",
-    "add": "Hinzufügen"
+  "screen": {
+    "home": {
+      "title": "Home",
+      "welcome": "Willkommen bei PDFisch!",
+      "add": "Hinzufügen"
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "security": "Sicherheit",
+      "biometric": "Biometrie",
+      "presentation": "Darstellung",
+      "theme": "Design",
+      "themeOptions": {
+        "dark": "Dunkel",
+        "light": "Hell",
+        "system": "System"
+      },
+      "language": "Sprache"
+    },
+    "scanner": {
+      "title": "Scanner"
+    }
   },
-  "SettingsScreen": {
-    "title": "Einstellungen"
-  },
-  "ScannerScreen": {
-    "title": "Scanner"
+  "languages": {
+    "system": "System",
+    "de": "Deutsch",
+    "en": "Englisch"
   }
 }

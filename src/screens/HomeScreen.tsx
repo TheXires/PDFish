@@ -26,7 +26,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       {!documents ? (
         <>
-          <Text>{t('homeScreen.welcome')}</Text>
+          <Text>{t('screen.home.welcome')}</Text>
           <Button onPress={() => setDocuments(dummyData)}>Add Documents</Button>
         </>
       ) : (
@@ -40,7 +40,7 @@ export default function HomeScreen() {
       )}
       <AnimatedFAB
         extended={isFABExtended}
-        label={t('homeScreen.add')}
+        label={t('screen.home.add')}
         onPress={() => navigation.navigate('Scanner')}
         icon="plus"
         style={styles.fab}

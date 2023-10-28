@@ -1,15 +1,32 @@
 interface Resources {
   "default": {
-    "homeScreen": {
-      "title": "Home",
-      "welcome": "Welcome to PDFish!",
-      "add": "Add"
+    "screen": {
+      "home": {
+        "title": "Home",
+        "welcome": "Welcome to PDFish!",
+        "add": "Add"
+      },
+      "settings": {
+        "title": "Settings",
     },
-    "SettingsScreen": {
-      "title": "Settings"
+        "biometric": "Biometrics",
+        "presentation": "Presentation",
+        "theme": "Theme",
+        "themeOptions": {
+          "dark": "Dark",
+          "light": "Light",
+          "system": "System"
+        },
+        "language": "Language"
+      },
+      "scanner": {
+        "title": "Scanner"
+      }
     },
-    "ScannerScreen": {
-      "title": "Scanner"
+    "languages": {
+      "system": "System",
+      "de": "German",
+      "en": "English"
     }
   }
 }

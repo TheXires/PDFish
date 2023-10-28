@@ -15,12 +15,12 @@ export default function BottomNavigator() {
       <MainTab.Screen
         name="Home"
         component={HomeScreen}
-        options={{ tabBarIcon: 'home', title: t('homeScreen.title') }}
+        options={{ tabBarIcon: 'home', title: t('screen.home.title') }}
       />
       <MainTab.Screen
         name="Settings"
         component={SettingsScreen}
-        options={{ tabBarIcon: 'cog', title: t('SettingsScreen.title') }}
+        options={{ tabBarIcon: 'cog', title: t('screen.settings.title') }}
       />
     </MainTab.Navigator>
   );
