@@ -1,30 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 import { Button, Dialog, Portal, RadioButton, Text } from 'react-native-paper';
 
 interface Props {
-  setValue: (value: string) => void;
   title: string;
   translationPrefix: string;
-  value: string;
   visible: boolean;
   options: string[];
+  startValue: string;
   onDismiss: () => void;
-  onSave: () => void;
+  onSave: (newValue: string) => void;
 }
 
 export default function RadioButtonDialog({
-  setValue,
   title,
   translationPrefix = '',
-  value,
   visible,
   options,
+  startValue,
   onDismiss,
   onSave,
 }: Props) {
   const { t } = useTranslation();
+
+  const [value, setValue] = useState<string>(startValue);
 
   return (
     <Portal>
@@ -44,7 +44,7 @@ export default function RadioButtonDialog({
         </Dialog.Content>
         <Dialog.Actions>
           <Button onPress={onDismiss}>{t('components.dialog.cancel')}</Button>
-          <Button onPress={onSave}>{t('components.dialog.save')}</Button>
+          <Button onPress={() => onSave(value)}>{t('components.dialog.save')}</Button>
         </Dialog.Actions>
       </Dialog>
     </Portal>
