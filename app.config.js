@@ -34,5 +34,13 @@ export default {
         projectId: 'ad974b1e-0b66-4cf4-90e4-0bab4eb9880c',
       },
     },
+    plugins: [
+      [
+        'expo-local-authentication',
+        {
+          faceIDPermission: 'Allow $(PRODUCT_NAME) to use Face ID.',
+        },
+      ],
+    ],
   },
 };
