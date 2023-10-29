@@ -1,3 +1,4 @@
+import * as LocalAuthentication from 'expo-local-authentication';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, View } from 'react-native';
@@ -36,11 +37,15 @@ export default function SettingsScreen() {
               title={t('screen.settings.biometric')}
               right={() =>
                 Switch({
-                  onChange: () =>
-                    setSecuritySettings({
-                      ...securitySettings,
-                      isProtected: !securitySettings?.isProtected,
-                    }),
+                  onChange: async () => {
+                    const res = await LocalAuthentication.authenticateAsync();
+                    if (res.success) {
+                      return setSecuritySettings({
+                        ...securitySettings,
+                        isProtected: !securitySettings.isProtected,
+                      });
+                    }
+                  },
                   value: securitySettings?.isProtected,
                 })
               }
