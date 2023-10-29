@@ -1,5 +1,10 @@
 {
   "screen": {
+    "authentication": {
+      "heading": "Authentifizierung",
+      "button": "Authentifizieren",
+      "hint": "Falls gewünscht, kann die Authentifizierung in den Einstellungen deaktiviert werden."
+    },
     "home": {
       "title": "Home",
       "welcome": "Willkommen bei PDFisch!",

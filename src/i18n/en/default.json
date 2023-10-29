@@ -1,5 +1,10 @@
 {
   "screen": {
+    "authentication": {
+      "heading": "Authentication",
+      "button": "Authenticate",
+      "hint": "If desired, authentication can be disabled in the settings."
+    },
     "home": {
       "title": "Home",
       "welcome": "Welcome to PDFish!",

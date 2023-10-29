@@ -1,6 +1,11 @@
 interface Resources {
   "default": {
     "screen": {
+      "authentication": {
+        "heading": "Authentication",
+        "button": "Authenticate",
+        "hint": "Authentication can be disabled in the settings if desired."
+      },
       "home": {
         "title": "Home",
         "welcome": "Welcome to PDFish!",
