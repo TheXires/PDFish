@@ -1,7 +1,7 @@
 import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
 import * as Localization from 'expo-localization';
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { useColorScheme } from 'react-native';
 import { useMMKVObject } from 'react-native-mmkv';
@@ -35,12 +35,17 @@ export default function App() {
     }
   }, []);
 
-  // App theme
-  const combinedTheme = getCombinedTheme(materialTheme, presentationSetting?.theme, colorScheme);
+  useEffect(() => {
+    // App language
+    const appLanguage = getSelectedLanguage(presentationSetting?.language, Localization.locale);
+    translator.changeLanguage(appLanguage);
+  }, [presentationSetting]);
 
-  // App language
-  const appLanguage = getSelectedLanguage(presentationSetting?.language, Localization.locale);
-  translator.changeLanguage(appLanguage);
+  // App theme
+  const combinedTheme = useMemo(
+    () => getCombinedTheme(materialTheme, presentationSetting?.theme, colorScheme),
+    [materialTheme, presentationSetting, colorScheme],
+  );
 
   return (
     <>
