@@ -41,6 +41,13 @@ export default {
           faceIDPermission: 'Allow $(PRODUCT_NAME) to use Face ID.',
         },
       ],
+      [
+        'expo-image-picker',
+        {
+          photosPermission:
+            'Allow $(PRODUCT_NAME) to accesses your photos create PDFs out of them.',
+        },
+      ],
     ],
   },
 };
