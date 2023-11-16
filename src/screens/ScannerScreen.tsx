@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
-import { selectImage } from '../util/image';
+import { scanImage, selectImage } from '../util/image';
 
 export default function ScannerScreen() {
   const { t } = useTranslation();
@@ -18,8 +18,13 @@ export default function ScannerScreen() {
   return (
     <View style={styles.container}>
       <Text>{t('screen.scanner.title')}</Text>
-      <Button onPress={handleImageSelection}>Test scan</Button>
-      {imageUri && <Image style={styles.image} source={imageUri} contentFit="contain" />}
+      <Button onPress={handleImageSelection}>Select Image</Button>
+      {imageUri && (
+        <>
+          <Image style={styles.image} source={imageUri} contentFit="contain" />
+          <Button onPress={() => scanImage(imageUri)}>Test scan</Button>
+        </>
+      )}
     </View>
   );
 }

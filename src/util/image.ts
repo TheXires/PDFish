@@ -22,3 +22,7 @@ export const selectImage = async (): Promise<string | undefined> => {
   }
   return undefined;
 };
+
+export const scanImage = async (filePath: string) => {
+  // TODO send blob to server use teseract.js there for the beginning
+};
