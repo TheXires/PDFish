@@ -1,5 +1,6 @@
 import * as ImagePicker from 'expo-image-picker';
 import { Alert } from 'react-native';
+import axios from 'axios';
 
 /**
  * opens gallery to select a picture
@@ -9,13 +10,12 @@ import { Alert } from 'react-native';
 export const selectImage = async (): Promise<string | undefined> => {
   try {
     const selectedImage = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
-      aspect: [1, 1],
+      base64: true,
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       quality: 0.5,
     });
     if (!selectedImage.assets) return undefined;
-    return selectedImage.assets[0].uri;
+    return selectedImage.assets[0].base64 ?? '';
   } catch (error) {
     Alert.alert('Error');
     console.error(error);
@@ -23,6 +23,11 @@ export const selectImage = async (): Promise<string | undefined> => {
   return undefined;
 };
 
-export const scanImage = async (filePath: string) => {
-  // TODO send blob to server use teseract.js there for the beginning
+export const scanImage = async (imageB64: string) => {
+  try {
+    const res = await axios.post('http://192.168.178.50:4456', { image: imageB64 });
+    console.log(res.data);
+  } catch (error) {
+    console.error(error);
+  }
 };

@@ -48,6 +48,14 @@ export default {
             'Allow $(PRODUCT_NAME) to accesses your photos create PDFs out of them.',
         },
       ],
+      [
+        'expo-build-properties',
+        {
+          android: {
+            usesCleartextTraffic: true,
+          },
+        },
+      ],
     ],
   },
 };

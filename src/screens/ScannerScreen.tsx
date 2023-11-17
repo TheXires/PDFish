@@ -12,7 +12,7 @@ export default function ScannerScreen() {
 
   const handleImageSelection = async () => {
     const uri = await selectImage();
-    setImageUri(uri);
+    setImageUri(`data:image/jpeg;base64,${uri}`);
   };
 
   return (
