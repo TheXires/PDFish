@@ -3,9 +3,9 @@ import { Alert, PermissionsAndroid, Platform } from 'react-native';
 import DocumentScanner, { ResponseType } from 'react-native-document-scanner-plugin';
 
 /**
- * Open gallery to select an image
- *
- * @returns image file url on success, otherwise undefined
+ * Opens the image library and allows the user to select an image.
+ * 
+ * @returns A promise that resolves to the URI of the selected image, or undefined if no image was selected.
  */
 export const selectImage = async (): Promise<string | undefined> => {
   try {
@@ -24,9 +24,9 @@ export const selectImage = async (): Promise<string | undefined> => {
 };
 
 /**
- * Open camera to take a picture of a document and crop it
+ * Scans a new document using the document scanner. This includes the option to let the user adjust the crop area. If the user does not grant camera permissions, an alert is shown.
  * 
- * @returns 
+ * @returns A promise that resolves to the path of the scanned image file, or undefined if no image was scanned.
  */
 export const scanNewDocument = async (): Promise<string | undefined> => {
   if (
@@ -34,6 +34,7 @@ export const scanNewDocument = async (): Promise<string | undefined> => {
     (await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA)) !==
       PermissionsAndroid.RESULTS.GRANTED
   ) {
+    // TODO translate
     Alert.alert('Error', 'User must grant camera permissions to use document scanner.');
     return;
   }
