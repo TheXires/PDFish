@@ -56,6 +56,12 @@ export default {
           },
         },
       ],
+      [
+        'react-native-document-scanner-plugin',
+        {
+          cameraPermission: 'We need camera access, so you can scan documents',
+        },
+      ],
     ],
   },
 };
