@@ -7,17 +7,8 @@ export enum FileType {
 }
 
 /**
- * Send image to server to convert it to pdf
- *
- * @param image
- * @param fileType
- * @returns
- */
-
-
-/**
  * Converts an image to PDF.
- * 
+ *
  * @param image - The image to convert, either as a base64 string or a URI.
  * @param fileType - The type of the image file.
  * @returns A Promise that resolves to the path of the converted PDF file, or undefined if an error occurs.
