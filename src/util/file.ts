@@ -3,8 +3,8 @@ import { Buffer } from 'buffer';
 
 /**
  * Saves the file data as a file with the specified file name.
- * @param fileData The data of the file to be saved.
- * @param fileName The name of the file.
+ * @param fileData - The data of the file to be saved.
+ * @param fileName - The name of the file.
  * @returns A promise that resolves to the file URI of the saved file.
  * @throws If there is an error while saving the file.
  */
@@ -39,6 +39,24 @@ export const ensureDirExists = async (path: string): Promise<string> => {
     return path;
   } catch (error) {
     console.error('Error ensuring directory exists:', error);
+    throw error;
+  }
+};
+
+/**
+ * Gets the base64 representation of an image at the specified path.
+ * @param path - The path of the image.
+ * @returns A promise that resolves to the base64 representation of the image.
+ * @throws If there is an error getting the base64 representation of the image.
+ */
+export const getBase64Image = async (path: string) => {
+  try {
+    const base64File = await FileSystem.readAsStringAsync(path, {
+      encoding: FileSystem.EncodingType.Base64,
+    });
+    return `data:image/jpeg;base64,${base64File}`;
+  } catch (error) {
+    console.error('Error getting base64 representation:', error);
     throw error;
   }
 };
